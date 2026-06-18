@@ -81,3 +81,18 @@ def plot_baseline_comparison(
     ax.set_ylabel("baseline mean raw count")
     ax.legend()
     return ax
+
+
+def plot_grid_heatmap(grid: pd.DataFrame, ax: plt.Axes | None = None, cmap: str = "viridis") -> plt.Axes:
+    """Heatmap of a red x green grid (as returned by compute_grid): x=currentRed, y=currentGreen."""
+    if ax is None:
+        _, ax = plt.subplots(figsize=(6, 5))
+    im = ax.imshow(grid.values, origin="lower", cmap=cmap, aspect="auto")
+    ax.set_xticks(range(len(grid.columns)))
+    ax.set_xticklabels(grid.columns)
+    ax.set_yticks(range(len(grid.index)))
+    ax.set_yticklabels(grid.index)
+    ax.set_xlabel("currentRed")
+    ax.set_ylabel("currentGreen")
+    plt.colorbar(im, ax=ax)
+    return ax

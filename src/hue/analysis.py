@@ -59,7 +59,17 @@ def compute_trial_summary(
     summary["deltaG"] = (summary["meanHueG"] - baseline["meanHueG"]).abs()
     summary["deltaB"] = (summary["meanHueB"] - baseline["meanHueB"]).abs()
     summary["distance"] = compute_distance(summary, channels=distance_channels)
+
+    led_settings = df[df["trCnt"] <= 999].groupby("trCnt")[["currentRed", "currentGreen"]].first()
+    summary = summary.join(led_settings)
+
     return summary.reset_index()
+
+
+def compute_grid(summary: pd.DataFrame, feature: str) -> pd.DataFrame:
+    """Pivot a per-trial summary into a currentGreen (rows) x currentRed (columns) grid for one feature."""
+    grid = summary.pivot(index="currentGreen", columns="currentRed", values=feature)
+    return grid.sort_index().sort_index(axis=1)
 
 
 def summarize_conditions(

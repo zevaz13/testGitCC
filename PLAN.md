@@ -24,17 +24,17 @@ Tracks the current plan of action for scaffolding the data visualization project
 
 **Success criteria:** a user can open a notebook, call functions from `src/<type>`, and produce a plot without writing boilerplate.
 
-## Phase 3: Testing
+## Phase 3: Grid plots
 
-- [ ] Add unit tests for `src/<type>` modules
-- [ ] Configure test runner (pytest) via `uv`
+- [x] Create a notebook for plotting the data of each single condition as grid of data with red intensity as x axis and green intensity as y axis (`notebooks/hue/grid_plots.ipynb`, `compute_grid`, `plot_grid_heatmap`)
+- [x] This grid could be use for each of the derived features (notebook loops over `meanHueR`, `meanHueG`, `meanHueB`, `distance`; `compute_grid` works for any summary column)
 
 **Success criteria:** `uv run pytest` passes and covers core data loading/transform functions.
 
-## Phase 4: Integration testing
-
-- [ ] Carry out integration testing (e.g. Playwright or similar) for any interactive/visual outputs
-- [ ] Fix defects found
+## Phase 4: Metamer identification
+- [ ] Read hueexperiment.md for task context and exploration requirements. ask questions as needed
+- [ ] Carry out integration exploratory analysis for finding the appropiate metamer
+- [ ] produce plots for this analysis
 
 **Success criteria:** integration tests pass; defects logged as GitHub issues and resolved.
 
