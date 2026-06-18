@@ -38,11 +38,15 @@ Tracks the current plan of action for scaffolding the data visualization project
 
 **Success criteria:** integration tests pass; defects logged as GitHub issues and resolved.
 
-## Phase 5: Behavioral data
+## Phase 5: Behavioral data. 1 participant/session
 - [x] Read beh.md for task context and exploration requirements. ask questions as needed. Add this file to gitignore, and ensure that the data in data/beh/raw is also ignored (`data/beh/beh.md` added to `.gitignore`; `data/beh/raw` already covered by existing rules)
 - [x] Carry out integration exploratory analysis for loading the data for a participant, extracting the right cloud of points, plotting the information, and finding the median/mean point (`src/beh/io.py`, `analysis.py`, `plotting.py`)
 - [x] produce plots for this analysis (`notebooks/beh/beh_analysis.ipynb`)
 
+## Phase 6: Behavioral data. multiple participant/sessions
+- [x] New data has been added to the raw folder. EAch of these is a different session of behavioral data. Plot the results for each session independently (`notebooks/beh/compare_sessions.ipynb`, section 2, reusing `plot_session_cloud`)
+- [x] Plot the results for the 3 sessions in the same plot. Find creative ways of showing them. (`plot_sessions_comparison` — colored scatter + median/mean markers + 1-std covariance ellipse per session)
+- [x] Quantify the difference between the distributions. (`compute_centroid_distance`, `compute_mahalanobis_distance`, `compute_session_distances` in `src/beh/analysis.py`)
 
 ## Notes
 
