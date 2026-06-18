@@ -28,11 +28,11 @@ TESTGITCC/
 - This is going to be a set of python notebooks and scripts that allow to organize, visualize and explore data from different domains  
 - The scafolding should allow to differentiate the different types of data we will use: hue, lux, beh, eeg, standarized scores. For each we will have a folder in data, one in notebooks, a src for modules of data of each kind
 - raw data is to be stored in data/typeOfdata/raw
-- We can include .md files to describe better each type of data
+- We can include .md files to describe better each type of data. Only read these when interacting with the type of data
 - Firs priorities are to allow the user to explore the data, and create functionalities that can be modularized later
 - We will use python notebooks
 - Create a python environment that has data analysis in mind
-- Always keep a document called PLAN.md where we can communicate about the current plan of action.
+- Always keep a document called PLAN.md where we can communicate about the current plan of action. Write the current milestones to it, and checklists toward that.
 
 ## Technical Decisions
 
