@@ -38,6 +38,12 @@ Tracks the current plan of action for scaffolding the data visualization project
 
 **Success criteria:** integration tests pass; defects logged as GitHub issues and resolved.
 
+## Phase 5: Behavioral data
+- [x] Read beh.md for task context and exploration requirements. ask questions as needed. Add this file to gitignore, and ensure that the data in data/beh/raw is also ignored (`data/beh/beh.md` added to `.gitignore`; `data/beh/raw` already covered by existing rules)
+- [x] Carry out integration exploratory analysis for loading the data for a participant, extracting the right cloud of points, plotting the information, and finding the median/mean point (`src/beh/io.py`, `analysis.py`, `plotting.py`)
+- [x] produce plots for this analysis (`notebooks/beh/beh_analysis.ipynb`)
+
+
 ## Notes
 
 - Package manager: `uv` only.

@@ -5,6 +5,7 @@
 
 # Unpublished experiment design docs
 hueexperiment.md
+data/beh/beh.md
 
 # Raw and large data files
 data/**/raw/*
