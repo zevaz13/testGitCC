@@ -32,9 +32,9 @@ Tracks the current plan of action for scaffolding the data visualization project
 **Success criteria:** `uv run pytest` passes and covers core data loading/transform functions.
 
 ## Phase 4: Metamer identification
-- [ ] Read hueexperiment.md for task context and exploration requirements. ask questions as needed
-- [ ] Carry out integration exploratory analysis for finding the appropiate metamer
-- [ ] produce plots for this analysis
+- [x] Read hueexperiment.md for task context and exploration requirements. ask questions as needed. Add this file to gitignore (added to `.gitignore`)
+- [x] Carry out integration exploratory analysis for finding the appropiate metamer (`compute_reference`, `compute_distance_to_reference` in `src/hue/analysis.py` — Model B, yellow-flash-referenced distance, using `RG` vs `Y` per the chosen approach)
+- [x] produce plots for this analysis (`notebooks/hue/metamer_analysis.ipynb` — Model A vs Model B grid heatmaps)
 
 **Success criteria:** integration tests pass; defects logged as GitHub issues and resolved.
 

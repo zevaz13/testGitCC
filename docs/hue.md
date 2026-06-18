@@ -22,10 +22,13 @@ A single experiment session lives in one folder under `data/hue/raw/` (e.g. `dat
   - `compute_distance(summary, channels=...)` — recompute the distance metric from an existing summary using any subset of R/G/B (e.g. just `("R","G")`).
   - `summarize_conditions(sessions, distance_channels=...)` — apply `compute_trial_summary` to every condition in a loaded set.
   - `compute_grid(summary, feature)` — pivot a per-trial summary into a `currentGreen` (rows) x `currentRed` (columns) 10x10 grid for one feature.
+  - `compute_reference(df)` — mean `meanHueR`/`meanHueG`/`meanHueB` across all stimulus trials, for conditions whose trials are all nominally identical repetitions (e.g. `flash_Y.txt`).
+  - `compute_distance_to_reference(summary, reference, channels=...)` — Model B (yellow-flash-referenced) distance from each trial's mean channel values to an external reference, per `hueexperiment.md`.
 - `plotting.py`
   - `plot_raw_channels(df)` — raw `hue_r`/`hue_g`/`hue_b` vs sample number.
   - `plot_trial_summary(summary)` — mean channel values and baseline-corrected deltas/distance vs `trCnt`.
   - `plot_feature_across_conditions(summaries, feature, conditions=None)` — overlay one summary column across all or a chosen subset of conditions.
+  - `plot_channels_across_conditions(summaries, channels=("meanHueR","meanHueG","meanHueB"), conditions=None)` — one subplot per channel, each comparing the chosen conditions (e.g. `G` vs `GY` to see the effect of adding yellow).
   - `plot_baseline_comparison(baselines, conditions=None)` — grouped bar chart of baseline channel means across conditions.
   - `plot_grid_heatmap(grid)` — heatmap of a `compute_grid` result, x=`currentRed`, y=`currentGreen`.
 
@@ -35,3 +38,4 @@ A single experiment session lives in one folder under `data/hue/raw/` (e.g. `dat
 - `explore_conditions.ipynb` — loads every condition in a session and produces the raw-channel and derived-value plots separately for each condition.
 - `compare_conditions.ipynb` — loads every condition in a session and compares a chosen feature (e.g. `distance`, `meanHueR`) and baseline channel means across all or a subset of conditions.
 - `grid_plots.ipynb` — loads every condition in a session and plots each condition's stimulus grid (red x green) as a heatmap, for a chosen set of derived features.
+- `metamer_analysis.ipynb` — compares the baseline-referenced (Model A) and yellow-flash-referenced (Model B, required per `hueexperiment.md`) distance grids for the `RG` condition, to identify red/green metamer candidates of the fixed yellow stimulus.

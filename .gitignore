@@ -3,6 +3,9 @@
 .env.*
 *.env
 
+# Unpublished experiment design docs
+hueexperiment.md
+
 # Raw and large data files
 data/**/raw/*
 !data/**/raw/.gitkeep

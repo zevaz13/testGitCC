@@ -57,6 +57,26 @@ def plot_feature_across_conditions(
     return ax
 
 
+def plot_channels_across_conditions(
+    summaries: dict[str, pd.DataFrame],
+    channels: tuple[str, ...] = ("meanHueR", "meanHueG", "meanHueB"),
+    conditions: list[str] | None = None,
+    axes: tuple[plt.Axes, ...] | None = None,
+) -> tuple[plt.Axes, ...]:
+    """One subplot per channel, each comparing the chosen conditions vs trCnt.
+
+    E.g. channels=("meanHueR", "meanHueG", "meanHueB") with
+    conditions=["G", "GY"] shows, per channel, how adding yellow to a green
+    stimulus shifts the stim averages.
+    """
+    if axes is None:
+        _, axes = plt.subplots(len(channels), 1, figsize=(12, 4 * len(channels)), sharex=True)
+    for ax, channel in zip(axes, channels):
+        plot_feature_across_conditions(summaries, feature=channel, conditions=conditions, ax=ax)
+        ax.set_title(channel)
+    return axes
+
+
 def plot_baseline_comparison(
     baselines: dict[str, pd.Series],
     conditions: list[str] | None = None,

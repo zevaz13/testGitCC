@@ -25,6 +25,32 @@ def compute_baseline(df: pd.DataFrame) -> pd.Series:
     return means[means.index > 999].mean()
 
 
+def compute_reference(df: pd.DataFrame) -> pd.Series:
+    """Mean meanHueR/meanHueG/meanHueB across all stimulus trials (trCnt <= 999).
+
+    Used for conditions whose stimulus trials are all nominally identical
+    repetitions (e.g. flash_Y.txt), to get a single low-noise reference
+    triplet, as opposed to compute_baseline, which averages the trCnt > 999
+    baseline trials.
+    """
+    means = _trial_means(df)
+    return means[means.index <= 999].mean()
+
+
+def compute_distance_to_reference(
+    summary: pd.DataFrame, reference: pd.Series, channels: tuple[str, ...] = ("R", "G", "B")
+) -> pd.Series:
+    """Model B: distance from each trial's mean channel values to an external reference.
+
+    Unlike compute_distance (Model A, baseline-referenced via the
+    deltaR/G/B columns), this compares meanHueR/G/B directly against any
+    reference triplet, e.g. compute_reference(load_session(flash_Y_path)),
+    per hueexperiment.md's required yellow-flash-referenced distance.
+    """
+    deltas = [(summary[f"meanHue{c}"] - reference[f"meanHue{c}"]).abs() for c in channels]
+    return np.sqrt(sum(delta**2 for delta in deltas))
+
+
 def compute_distance(summary: pd.DataFrame, channels: tuple[str, ...] = ("R", "G", "B")) -> pd.Series:
     """Baseline-corrected distance using a chosen subset of channels.
 
