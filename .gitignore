@@ -1,0 +1,32 @@
+# Secrets / environment
+.env
+.env.*
+*.env
+
+# Raw and large data files
+data/**/raw/*
+!data/**/raw/.gitkeep
+*.txt
+*.nvz
+*.csv
+*.h5
+*.hdf5
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.uv/
+uv.lock.bak
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
